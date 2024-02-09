@@ -128,7 +128,7 @@ class _Common(BaseCommand):
         args.append("--dns-route53")
 
         if self.cert_name:
-            args.extend(["--name", self.cert_name])
+            args.extend(["--cert-name", self.cert_name])
 
         args.extend(["-m", self.email])
 
