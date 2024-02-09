@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "dns-block-blackhole"
+version = "1.0.0"
+description = "HTTP/S server for your DNS black hole to redirect to"
+authors = ["Filip Sufitchi <fsufitch@users.noreply.github.com>"]
+license = "AGPLv3"
+readme = "README.md"
+packages = [
+    { include = "dns_block_blackhole"},
+]
+
+[tool.poetry.scripts]
+dns-block-blackhole = "dns_block_blackhole.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+certbot = {version = "^2.9.0", optional = true}
+certbot-dns-route53 = {version = "^2.9.0", optional = true}
+boto3 = {version = "^1.34.38", optional = true}
+flask = {extras = ["async"], version = "^3.0.2"}
+uvicorn = {version = "^0.27.0.post1", optional = true}
+starlette = "^0.37.0"
+jinja2 = "^3.1.3"
+
+[tool.poetry.extras]
+certs-route53 = ["certbot", "certbot-dns-route53", "boto3"]
+server = [ "uvicorn" ]
+all = ["certbot", "certbot-dns-route53", "boto3", "uvicorn"]
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.0.3"
+black = "^24.1.1"
+pyright = "^1.1.350"
+boto3-stubs = {extras = ["sts"], version = "^1.34.38"}
+
+[tool.pylint.main]
+disable = [
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "broad-exception-raised",
+    "raise-missing-from",
+    "import-outside-toplevel",
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

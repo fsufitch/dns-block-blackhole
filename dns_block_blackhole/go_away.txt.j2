@@ -1,0 +1,18 @@
+###################
+# REQUEST BLOCKED #
+###################
+
+You tried to access '{{request.url.hostname}}'. 
+{%- if 'x-forwarded-host' in request.headers -%} 
+{{ ' ' }}Or maybe it was '{{ request.headers['x-forwarded-host'] }}'.
+{%- endif %}
+
+Since you are viewing this, something redirected you to it, which means your request got blocked.
+
+Go away.
+
+--- Request details ---
+{{ request.method }} {{ request.path }}
+
+{% for k, v in request.headers.items() %}{{ k | title }}: {{ v }}
+{% endfor %}

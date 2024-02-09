@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "golang.go",
+        "ms-azuretools.vscode-docker",
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.black-formatter",
+        "tamasfe.even-better-toml"
+    ]
+}
